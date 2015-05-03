@@ -256,14 +256,7 @@ public class MainActivity extends ActionBarActivity
 	{
 		final int nErrorCode = bundle.getInt(Extra.ERROR_CODE.getKey());
 
-		runOnUiThread(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				Toast.makeText(MainActivity.this, getString(R.string.err, nErrorCode, ErrorCode.fromOrdinal(nErrorCode).name()), Toast.LENGTH_SHORT).show();
-			}
-		});
+		Toast.makeText(MainActivity.this, getString(R.string.err, nErrorCode, ErrorCode.fromOrdinal(nErrorCode).name()), Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
@@ -311,77 +304,40 @@ public class MainActivity extends ActionBarActivity
 				}
 				else
 				{
-					runOnUiThread(new Runnable()
-					{
-						@Override
-						public void run()
-						{
-							Toast.makeText(MainActivity.this, R.string.access_denied, Toast.LENGTH_SHORT).show();
-						}
-					});
+					Toast.makeText(MainActivity.this, R.string.access_denied, Toast.LENGTH_SHORT).show();
 				}
 				break;
 			case RESPONSE_ACTION_CONTACTS:
 				if(responseType == ResponseType.SUCCESS)
 				{
-					final ArrayList<Contact> aContacts = Contact.fromBundle(extras);
-					runOnUiThread(new Runnable()
-					{
-						@Override
-						public void run()
-						{
-							m_adapter.update(aContacts);
-						}
-					});
+					m_adapter.update(Contact.fromBundle(extras));
 				}
 				break;
 			case RESPONSE_ACTION_SENDMEDIA:
 			case RESPONSE_ACTION_SENDMESSAGE:
 				if(responseType == ResponseType.SUCCESS)
 				{
-					runOnUiThread(new Runnable()
-					{
-						@Override
-						public void run()
-						{
-							Toast.makeText(MainActivity.this, R.string.suc_send, Toast.LENGTH_SHORT).show();
-						}
-					});
+					Toast.makeText(MainActivity.this, R.string.suc_send, Toast.LENGTH_SHORT).show();
 				}
 				break;
 			case RESPONSE_ACTION_LOADMESSAGES:
 				if(responseType == ResponseType.SUCCESS)
 				{
 					ArrayList<Message> aMessages = Message.fromBundle(extras);
-					String strTmpDump = "";
+					String strDump = "";
 					for(Message msg : aMessages)
 					{
-						strTmpDump += (strTmpDump.isEmpty() ? "" : "\n") + "[" + msg.getType().name() + "] " + msg.getData();
+						strDump += (strDump.isEmpty() ? "" : "\n") + "[" + msg.getType().name() + "] " + msg.getData();
 					}
-					final String strDump = strTmpDump;
-					runOnUiThread(new Runnable()
-					{
-						@Override
-						public void run()
-						{
-							Toast.makeText(MainActivity.this, strDump, Toast.LENGTH_LONG).show();
-						}
-					});
+
+					Toast.makeText(MainActivity.this, strDump, Toast.LENGTH_LONG).show();
 				}
 				break;
 			case RESPONSE_ACTION_COUNTMESSAGES:
 				if(responseType == ResponseType.SUCCESS)
 				{
-					final int nMessages = extras.getInt(Extra.MESSAGES_AMOUNT.getKey());
-
-					runOnUiThread(new Runnable()
-					{
-						@Override
-						public void run()
-						{
-							Toast.makeText(MainActivity.this, String.valueOf(nMessages), Toast.LENGTH_SHORT).show();
-						}
-					});
+					int nMessages = extras.getInt(Extra.MESSAGES_AMOUNT.getKey());
+					Toast.makeText(MainActivity.this, String.valueOf(nMessages), Toast.LENGTH_SHORT).show();
 				}
 				break;
 		}

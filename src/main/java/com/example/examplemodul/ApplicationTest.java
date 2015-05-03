@@ -9,4 +9,10 @@ import com.seebye.messengerapi.api.App;
  */
 public class ApplicationTest extends App
 {
+	@Override
+	public void onCreate()
+	{
+		super.onCreate();
+		CrashHandler.setCrashHandler();
+	}
 }
