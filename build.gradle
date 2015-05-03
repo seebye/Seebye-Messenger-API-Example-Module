@@ -1,0 +1,52 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "21.1.2"
+
+    /**
+     * Looking for Permission
+     */
+    def manifestConstantsFile = file(project(':seebyemessengerapicommunication').getProjectDir().getPath() + "/manifestConstants.txt")
+    def PERMISSION_MESSENGERAPI = ""
+    def ACTION_MESSENGERAPI = ""
+    if (manifestConstantsFile.canRead())
+    {
+        def Properties props = new Properties()
+
+        props.load(new FileInputStream(manifestConstantsFile))
+
+        PERMISSION_MESSENGERAPI = props['PERMISSION_MESSENGERAPI']
+        ACTION_MESSENGERAPI = props['ACTION_MESSENGERAPI']
+    }
+    else
+    {
+        throw new GradleException("Could not read manifestConstants.txt!")
+    }
+
+    defaultConfig {
+        applicationId "com.seebye.messengerapi.examplemodul"
+        minSdkVersion 18
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        debug
+        {
+            manifestPlaceholders = [PERMISSION_MESSENGERAPI: PERMISSION_MESSENGERAPI, ACTION_MESSENGERAPI: ACTION_MESSENGERAPI]
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            manifestPlaceholders = [PERMISSION_MESSENGERAPI: PERMISSION_MESSENGERAPI, ACTION_MESSENGERAPI: ACTION_MESSENGERAPI]
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:22.0.0'
+    compile project(':seebyemessengerapicommunication')
+}

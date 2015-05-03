@@ -1,0 +1,25 @@
+<resources>
+	<string name="app_name">Example Modul</string>
+
+	<string name="hello_world">Hello world!</string>
+	<string name="action_settings">Settings</string>
+
+
+	<string name="loadmsgs">load messages</string>
+	<string name="countmessages">count messages</string>
+	<string name="sendimage">image</string>
+	<string name="sendaudio">audio</string>
+	<string name="sendvideo">video</string>
+	<string name="send">send</string>
+	<string name="message">the text of your message..</string>
+
+	<string name="err_select">Maybe you should select a contact.</string>
+
+
+	<string name="selected">%s selected</string>
+	<!--string name="err_send">Failed to send the message..</string-->
+	<string name="err" formatted="false">Error[%d]: %s</string>
+	<string name="suc_send">Message sent</string>
+
+	<string name="access_denied">"So.. you don't trust me.."</string>
+</resources>

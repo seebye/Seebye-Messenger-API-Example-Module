@@ -1,0 +1,88 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  xmlns:tools="http://schemas.android.com/tools"
+			  android:layout_width="match_parent"
+			  android:layout_height="match_parent"
+			  android:orientation="vertical"
+			  tools:context=".MainActivity"
+			  android:focusable="true" android:focusableInTouchMode="true">
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+		<EditText
+			android:id="@+id/text"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_toLeftOf="@+id/send"
+			android:hint="@string/message"/>
+		<Button
+			android:id="@+id/send"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/send"
+			android:layout_alignParentRight="true"/>
+	</RelativeLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:weightSum="1"
+		android:gravity="center">
+
+		<Button
+			android:id="@+id/sendimage"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight=".3"
+			android:text="@string/sendimage"/>
+
+		<Button
+			android:id="@+id/sendaudio"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight=".3"
+			android:text="@string/sendaudio"/>
+
+		<Button
+			android:id="@+id/sendvideo"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight=".3"
+			android:text="@string/sendvideo"/>
+
+	</LinearLayout>
+
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:weightSum="1"
+		android:gravity="center">
+
+		<Button
+			android:layout_gravity="center"
+			android:id="@+id/loadmessages"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight=".3"
+			android:text="@string/loadmsgs"/>
+
+
+		<Button
+			android:layout_gravity="center"
+			android:id="@+id/coutmessages"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight=".3"
+			android:text="@string/countmessages"/>
+
+	</LinearLayout>
+
+	<ListView
+		android:id="@+id/contacts"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"/>
+
+</LinearLayout>
