@@ -21,9 +21,6 @@ public class receiver extends AbstractBroadcastReceiver
 	// (note: this is just a quickly created example.. )
 	private static final ConcurrentHashMap<Object, ConcurrentHashMap<Long, ResponseCallback>> s_mapCallbacks = new ConcurrentHashMap<>();
 
-	/**
-	 * This method is always executed on a seperate thread -> we're not going to use the ui-thread
-	 */
 	@Override
 	protected void onResponseReceived(long lBroadcastID, int nRequestActionID, @NonNull ResponseType responseType, @NonNull Action action, @NonNull Bundle extras)
 	{
